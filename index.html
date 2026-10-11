@@ -1,0 +1,969 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Beneath the Surface - Move-In &amp; Move-Out Condition | The Snag Tag</title>
+<meta name="description" content="Move-in and move-out condition record for tenants, landlords and buyers: room-by-room comparison, time-stamped photos, keys and meter readings, fair wear and tear guidance. Part of The Snag Tag Beneath the Surface collection.">
+<style>
+:root{
+  --paper:#F7FAFD; --sheet:#FFFFFF; --grid:rgba(45,91,154,.07); --grid2:rgba(45,91,154,.035);
+  --ink:#16243F; --ink2:#44546F; --muted:#6B7A93; --line:#C9D6E8; --line2:#E2EAF4;
+  --blue:#2D5B9A; --blue-soft:#E8F0FA; --cyan:#1E3A8A; --cyan-soft:#EAEFFB;
+  --high:#B3261E; --high-soft:#FCEBEA; --med:#A15C00; --med-soft:#FFF3E0; --low:#2E7D4F; --low-soft:#E7F5EC;
+  --focus:#1E3A8A; --shadow:0 1px 2px rgba(22,36,63,.06),0 4px 14px rgba(22,36,63,.05);
+  --mono:ui-monospace,"SFMono-Regular","Cascadia Mono","Roboto Mono",Consolas,monospace;
+  --sans:"Segoe UI",system-ui,-apple-system,"Helvetica Neue",Arial,sans-serif;
+}
+[data-theme="dark"]{
+  --paper:#0F1A2C; --sheet:#15233A; --grid:rgba(140,180,230,.07); --grid2:rgba(140,180,230,.035);
+  --ink:#E6EEF9; --ink2:#B8C6DB; --muted:#8C9BB2; --line:#2F4466; --line2:#243855;
+  --blue:#8CB4E6; --blue-soft:#1C3150; --cyan:#BFD2F8; --cyan-soft:#16223F;
+  --high:#FF8A80; --high-soft:#3A1E22; --med:#FFB74D; --med-soft:#3A2C17; --low:#81C995; --low-soft:#1B3326;
+  --shadow:none;
+}
+*{box-sizing:border-box}
+html,body{margin:0}
+body{
+  font-family:var(--sans); color:var(--ink); background:var(--paper); font-size:15px; line-height:1.5;
+  background-image:linear-gradient(var(--grid) 1px,transparent 1px),linear-gradient(90deg,var(--grid) 1px,transparent 1px),
+  linear-gradient(var(--grid2) 1px,transparent 1px),linear-gradient(90deg,var(--grid2) 1px,transparent 1px);
+  background-size:80px 80px,80px 80px,16px 16px,16px 16px;
+}
+button,input,select,textarea{font:inherit;color:inherit}
+a{color:var(--blue)}
+.wrap{max-width:1180px;margin:0 auto;padding:0 16px}
+/* Title block */
+header.tb{background:var(--sheet);border-bottom:2px solid var(--ink);position:sticky;top:0;z-index:20}
+@media(max-width:700px){header.tb{position:static}.tb-cell{padding:8px 12px}}
+.tb-row{display:flex;align-items:stretch;gap:0;flex-wrap:wrap}
+.tb-cell{padding:10px 14px;border-right:1px solid var(--line);display:flex;flex-direction:column;justify-content:center;min-width:0}
+.tb-cell:last-child{border-right:0}
+.tb-label{font-family:var(--mono);font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+.brand{flex:1 1 280px}
+.brand .coll{font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--cyan)}
+.brand h1{margin:2px 0 0;font-size:20px;font-weight:700;letter-spacing:-.01em}
+.brand h1 span{color:var(--blue);font-weight:600}
+.tb-ctrl{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+.seg{display:inline-flex;border:1px solid var(--ink);border-radius:4px;overflow:hidden}
+.seg button{border:0;background:transparent;padding:6px 10px;font-size:13px;cursor:pointer;font-family:var(--mono)}
+.seg button+button{border-left:1px solid var(--ink)}
+.seg button.on{background:var(--ink);color:var(--sheet)}
+nav.tabs{background:var(--sheet);border-bottom:1px solid var(--line)}
+nav.tabs .wrap{display:flex;gap:2px;overflow-x:auto;scrollbar-width:thin}
+nav.tabs button{border:0;background:none;padding:12px 14px;cursor:pointer;font-size:14px;color:var(--ink2);border-bottom:3px solid transparent;white-space:nowrap}
+nav.tabs button .n{font-family:var(--mono);font-size:11px;color:var(--muted);margin-right:6px}
+nav.tabs button.on{color:var(--ink);border-bottom-color:var(--cyan);font-weight:600}
+main{padding:22px 0 60px}
+.sheet{background:var(--sheet);border:1px solid var(--line);border-radius:6px;box-shadow:var(--shadow);margin-bottom:18px;position:relative}
+.sheet-h{display:flex;justify-content:space-between;align-items:center;gap:10px;padding:12px 16px;border-bottom:1px solid var(--line2);flex-wrap:wrap}
+.sheet-h h2{margin:0;font-size:17px}
+.sheet-h .ref{font-family:var(--mono);font-size:11px;color:var(--muted);letter-spacing:.08em}
+.sheet-b{padding:16px}
+.lede{color:var(--ink2);margin:0 0 12px;max-width:760px}
+.grid{display:grid;gap:12px}
+.g2{grid-template-columns:repeat(2,minmax(0,1fr))}
+.g3{grid-template-columns:repeat(3,minmax(0,1fr))}
+.g4{grid-template-columns:repeat(4,minmax(0,1fr))}
+@media(max-width:820px){.g3,.g4{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:560px){.g2,.g3,.g4{grid-template-columns:1fr}}
+label.f{display:flex;flex-direction:column;gap:4px;font-size:13px;color:var(--ink2);min-width:0}
+label.f>span{font-family:var(--mono);font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
+input[type=text],input[type=number],input[type=date],select,textarea{
+  width:100%;padding:9px 10px;border:1px solid var(--line);border-radius:4px;background:var(--sheet);font-size:14px}
+textarea{min-height:70px;resize:vertical}
+input:focus,select:focus,textarea:focus,button:focus-visible{outline:2px solid var(--focus);outline-offset:1px}
+.hint{font-size:12px;color:var(--muted)}
+.conv{font-family:var(--mono);font-size:12px;color:var(--cyan);min-height:16px}
+.btn{display:inline-flex;align-items:center;gap:6px;border:1px solid var(--ink);background:var(--sheet);padding:8px 14px;border-radius:4px;cursor:pointer;font-size:14px}
+.btn:hover{background:var(--blue-soft)}
+.btn.pri{background:var(--ink);color:var(--sheet)}
+.btn.pri:hover{background:var(--blue);border-color:var(--blue)}
+.btn.sm{padding:5px 10px;font-size:13px}
+.btn.ghost{border-color:var(--line)}
+.btn.danger{border-color:var(--high);color:var(--high)}
+.row{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+.chips{display:flex;flex-wrap:wrap;gap:6px}
+.chip{border:1px solid var(--line);background:var(--sheet);border-radius:999px;padding:5px 11px;font-size:13px;cursor:pointer;color:var(--ink2)}
+.chip.on{background:var(--cyan-soft);border-color:var(--cyan);color:var(--ink);font-weight:600}
+.chip.on::before{content:"\2713  ";color:var(--cyan)}
+/* Journey */
+.journey{display:flex;gap:0;overflow-x:auto;padding:4px 0}
+.jstep{flex:1 0 110px;text-align:center;position:relative;padding:8px 4px}
+.jstep .dot{width:34px;height:34px;margin:0 auto 6px;border:2px solid var(--ink);border-radius:50%;display:grid;place-items:center;font-family:var(--mono);font-size:12px;background:var(--sheet);position:relative;z-index:1}
+.jstep::after{content:"";position:absolute;top:24px;left:50%;right:-50%;border-top:2px dashed var(--line)}
+.jstep:last-child::after{display:none}
+.jstep .t{font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase}
+.jstep .d{font-size:12px;color:var(--muted)}
+/* Tables */
+.tbl{width:100%;border-collapse:collapse;font-size:14px}
+.tbl th{font-family:var(--mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);text-align:left;padding:8px;border-bottom:2px solid var(--ink);font-weight:500}
+.tbl td{padding:10px 8px;border-bottom:1px solid var(--line2);vertical-align:top}
+.tbl td .sub{font-size:12px;color:var(--muted)}
+.tbl-wrap{overflow-x:auto}
+@media(max-width:700px){
+  .tbl.stack thead{display:none}
+  .tbl.stack tr{display:block;border:1px solid var(--line);border-radius:6px;margin-bottom:10px;padding:6px}
+  .tbl.stack td{display:block;border:0;padding:6px}
+  .tbl.stack td[data-l]::before{content:attr(data-l);display:block;font-family:var(--mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+}
+.risk{display:inline-block;font-family:var(--mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;padding:2px 8px;border-radius:3px;border:1px solid}
+.risk.High{color:var(--high);background:var(--high-soft);border-color:var(--high)}
+.risk.Medium{color:var(--med);background:var(--med-soft);border-color:var(--med)}
+.risk.Low{color:var(--low);background:var(--low-soft);border-color:var(--low)}
+.stat{display:inline-flex;border:1px solid var(--line);border-radius:4px;overflow:hidden;flex-wrap:wrap}
+.stat button{border:0;background:var(--sheet);padding:5px 9px;font-size:12px;cursor:pointer;font-family:var(--mono);color:var(--ink2)}
+.stat button+button{border-left:1px solid var(--line)}
+.stat button.on[data-v="ok"],.stat button.on[data-v="none"]{background:var(--low-soft);color:var(--low);font-weight:700}
+.stat button.on[data-v="finding"],.stat button.on[data-v="signs"]{background:var(--high-soft);color:var(--high);font-weight:700}
+.stat button.on[data-v="open"],.stat button.on[data-v="unchecked"]{background:var(--blue-soft);color:var(--blue);font-weight:700}
+.stat button.on[data-v="na"],.stat button.on[data-v="noaccess"]{background:var(--med-soft);color:var(--med);font-weight:700}
+.note-in{margin-top:6px;font-size:13px;padding:6px 8px}
+/* Findings */
+.fcard{border:1px solid var(--line);border-left:4px solid var(--blue);border-radius:6px;padding:12px 14px;margin-bottom:10px;background:var(--sheet);display:flex;gap:12px;justify-content:space-between;flex-wrap:wrap}
+.fcard.High{border-left-color:var(--high)}.fcard.Medium{border-left-color:var(--med)}.fcard.Low{border-left-color:var(--low)}
+.fid{font-family:var(--mono);font-weight:700;letter-spacing:.06em}
+.fcard .meta{font-size:13px;color:var(--ink2)}
+.empty{border:1px dashed var(--line);border-radius:6px;padding:26px;text-align:center;color:var(--muted)}
+/* Editor */
+.step{border-top:1px solid var(--line2);padding:16px 0}
+.step:first-child{border-top:0;padding-top:0}
+.step-h{display:flex;align-items:center;gap:10px;margin-bottom:10px}
+.step-h .num{width:28px;height:28px;border:2px solid var(--ink);border-radius:50%;display:grid;place-items:center;font-family:var(--mono);font-size:12px;flex:0 0 auto}
+.step-h h3{margin:0;font-size:15px}
+.step-h .tag{font-family:var(--mono);font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--cyan)}
+.q{font-size:14px;font-weight:600;margin:10px 0 6px}
+.editor-layout{display:grid;grid-template-columns:minmax(0,1fr) 340px;gap:18px}
+@media(max-width:960px){.editor-layout{grid-template-columns:1fr}}
+.side{position:sticky;top:130px;align-self:start}
+@media(max-width:960px){.side{position:static}}
+.prompt-box{border:1px solid var(--cyan);border-radius:6px;background:var(--cyan-soft);padding:12px 14px}
+.prompt-box h4{margin:0 0 6px;font-family:var(--mono);font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--cyan)}
+.prompt-box ul{margin:4px 0 10px;padding-left:18px;font-size:13px}
+.prompt-box li{margin-bottom:4px}
+.warn{border:1px solid var(--high);background:var(--high-soft);border-radius:6px;padding:10px 12px;font-size:13px;margin-bottom:10px}
+.warn b{color:var(--high)}
+.info{border:1px solid var(--blue);background:var(--blue-soft);border-radius:6px;padding:10px 12px;font-size:13px;margin-bottom:10px}
+.ok{border:1px solid var(--low);background:var(--low-soft);border-radius:6px;padding:10px 12px;font-size:13px;margin-bottom:10px}
+/* Photos */
+.photos{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
+@media(max-width:560px){.photos{grid-template-columns:1fr}}
+.ph{border:1px dashed var(--ink2);border-radius:6px;padding:10px;text-align:center;background:var(--paper);min-height:160px;display:flex;flex-direction:column;gap:6px;justify-content:center;align-items:center}
+.ph .pt{font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase}
+.ph .pd{font-size:12px;color:var(--muted)}
+.ph img{max-width:100%;max-height:170px;border-radius:4px;border:1px solid var(--line)}
+.ph input{display:none}
+/* Dew */
+.dew-out{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin-top:12px}
+@media(max-width:560px){.dew-out{grid-template-columns:1fr}}
+.kpi{border:1px solid var(--line);border-radius:6px;padding:10px 12px;background:var(--paper)}
+.kpi .k{font-family:var(--mono);font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+.kpi .v{font-size:20px;font-weight:700;font-family:var(--mono)}
+.kpi .s{font-size:12px;color:var(--ink2)}
+.sum-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px}
+@media(max-width:700px){.sum-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+.legend{display:grid;gap:8px;font-size:13px}
+.legend div{display:flex;gap:10px;align-items:flex-start}
+.refs{font-size:13px;padding-left:18px}
+.refs li{margin-bottom:6px}
+.src{font-family:var(--mono);font-size:10.5px;letter-spacing:.03em;color:var(--muted);margin-top:4px}
+.src a{color:var(--cyan);text-decoration:none;border-bottom:1px dotted var(--cyan)}
+.srclist{list-style:none;padding:0;margin:0;font-size:13px}
+.srclist li{padding:8px 0;border-bottom:1px solid var(--line2);overflow-wrap:anywhere}
+.refs li,.rep-f dd{overflow-wrap:anywhere}
+.srclist .key{font-family:var(--mono);font-size:11px;color:var(--cyan);letter-spacing:.06em;text-transform:uppercase;display:block}
+.srclist li:target{background:var(--cyan-soft)}
+.steps li{margin-bottom:8px}
+@media(max-width:700px){#reportBody table.tbl{display:block;overflow-x:auto}}
+.toast{position:fixed;bottom:16px;left:50%;transform:translateX(-50%);background:var(--ink);color:var(--sheet);padding:10px 16px;border-radius:4px;font-size:14px;opacity:0;pointer-events:none;transition:opacity .2s;z-index:99;max-width:90vw}
+.toast.show{opacity:1}
+footer{border-top:2px solid var(--ink);background:var(--sheet);padding:14px 0;font-family:var(--mono);font-size:11px;letter-spacing:.08em;color:var(--muted)}
+footer .wrap{display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap}
+.hide{display:none!important}
+.buyer-only,.owner-only{}
+body[data-mode="buyer"] .owner-only{display:none!important}
+body[data-mode="owner"] .buyer-only{display:none!important}
+/* Report */
+.rep-photos{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;margin-top:8px}
+.rep-photos figure{margin:0;font-family:var(--mono);font-size:10px;color:var(--muted);text-transform:uppercase;letter-spacing:.08em}
+.rep-photos img{width:100%;border:1px solid var(--line);border-radius:3px}
+.rep-f{border:1px solid var(--line);border-radius:6px;padding:12px;margin-bottom:12px;page-break-inside:avoid}
+.rep-f dl{display:grid;grid-template-columns:170px 1fr;gap:4px 12px;margin:8px 0;font-size:13px}
+.rep-f dt{font-family:var(--mono);font-size:11px;text-transform:uppercase;letter-spacing:.06em;color:var(--muted)}
+.rep-f dd{margin:0}
+@media(max-width:560px){.rep-f dl{grid-template-columns:1fr}}
+@media print{
+  :root,[data-theme="dark"]{--paper:#fff;--sheet:#fff;--ink:#16243F;--ink2:#44546F;--muted:#5B6A82;--line:#B8C6DA;--line2:#DDE5F0;--blue:#2D5B9A;--blue-soft:#EEF3FA;--cyan:#1E3A8A;--cyan-soft:#EAEFFB;--high:#B3261E;--high-soft:#FCEBEA;--med:#A15C00;--med-soft:#FFF3E0;--low:#2E7D4F;--low-soft:#E7F5EC}
+  body{background:#fff;font-size:12px;color:#16243F}
+  .rep-f{page-break-inside:auto}
+  .rep-f dl,.rep-photos figure{page-break-inside:avoid}
+  .rep-photos img{max-height:220px;object-fit:contain}
+  header.tb,nav.tabs,footer,.no-print,.toast{display:none!important}
+  .view{display:none!important}
+  #view-report{display:block!important}
+  .sheet{box-shadow:none;border-color:#999}
+  main{padding:0}
+}
+</style>
+</head>
+<body data-mode="buyer">
+
+<header class="tb">
+  <div class="wrap tb-row" style="padding:0">
+    <div class="tb-cell brand">
+      <div class="coll">The Snag Tag &middot; Beneath the Surface</div>
+      <h1>Move-In / Move-Out <span>Condition</span></h1>
+    </div>
+    <div class="tb-cell">
+      <div class="tb-label">Mode</div>
+      <div class="seg" id="modeSeg" role="group" aria-label="Inspection mode">
+        <button data-v="buyer">Pre-Purchase</button><button data-v="owner">Maintenance</button>
+      </div>
+    </div>
+    <div class="tb-cell">
+      <div class="tb-label">Display</div>
+      <div class="seg" id="themeSeg" role="group" aria-label="Theme">
+        <button data-v="light">Light</button><button data-v="dark">Dark</button>
+      </div>
+    </div>
+  </div>
+</header>
+
+<nav class="tabs">
+  <div class="wrap" id="tabs">
+    <button data-t="start"><span class="n">00</span>Start</button>
+    <button data-t="sweep"><span class="n">01</span>Handover Sweep</button>
+    <button data-t="checks"><span class="n">02</span>Master Checks</button>
+    <button data-t="findings"><span class="n">03</span>Findings</button>
+    <button data-t="log"><span class="n">04</span>Condition Record &amp; Handover</button>
+    <button data-t="report"><span class="n">05</span>Report</button>
+    <button data-t="guide"><span class="n">06</span>Guide &amp; Standards</button>
+  </div>
+</nav>
+
+<main>
+<div class="wrap">
+
+<!-- START -->
+<section class="view" id="view-start">
+  <div class="sheet">
+    <div class="sheet-h"><h2>Record it on day one. Prove it on the last day.</h2><span class="ref">SHEET 00 &middot; START</span></div>
+    <div class="sheet-b">
+      <p class="lede">The condition of a home on the day you move in, and the day you move out, is what deposit, handover and repair disputes come down to. This check walks every room, records the condition with time-stamped photos, keeps meter readings and keys, and compares move-in with move-out, item by item. Use it as a tenant, a landlord, or a buyer on the final walk-through before completion.</p>
+      <div class="journey" aria-label="Inspection journey">
+        <div class="jstep"><div class="dot">1</div><div class="t">Safety</div><div class="d">Alarms, gas, water, electrics</div></div>
+        <div class="jstep"><div class="dot">2</div><div class="t">Rooms</div><div class="d">Walls, floors, fittings, appliances</div></div>
+        <div class="jstep"><div class="dot">3</div><div class="t">Photos</div><div class="d">Time-stamped, every room</div></div>
+        <div class="jstep"><div class="dot">4</div><div class="t">Meters</div><div class="d">Readings with date and time</div></div>
+        <div class="jstep"><div class="dot">5</div><div class="t">Keys</div><div class="d">Count in, count out</div></div>
+        <div class="jstep"><div class="dot">6</div><div class="t">Compare</div><div class="d">Move-in vs move-out</div></div>
+        <div class="jstep"><div class="dot">7</div><div class="t">Resolve</div><div class="d">In writing, with evidence</div></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="sheet">
+    <div class="sheet-h"><h2>Property details</h2><span class="ref">TITLE BLOCK</span></div>
+    <div class="sheet-b">
+      <div class="grid g3">
+        <label class="f"><span>Property name / reference</span><input type="text" data-p="name" placeholder="e.g. 12 Seaview Road, Flat 3"></label>
+        <label class="f"><span>Address</span><input type="text" data-p="address"></label>
+        <label class="f"><span>Inspection date</span><input type="date" data-p="date"></label>
+        <label class="f"><span>Inspected by</span><input type="text" data-p="inspector"></label>
+        <label class="f owner-only"><span>You are the</span><select data-p="role"><option value="">Select</option><option>Tenant</option><option>Landlord / agent</option><option>Owner moving in or out</option></select></label>
+        <label class="f owner-only"><span>Move-in date</span><input type="date" data-p="indate"></label>
+        <label class="f owner-only"><span>Move-out date</span><input type="date" data-p="outdate"></label>
+        <label class="f owner-only"><span>Deposit / bond scheme and reference</span><input type="text" data-p="deposit" placeholder="Record, don't guess"></label>
+        <label class="f"><span>Other party (landlord, agent, tenant or seller)</span><input type="text" data-p="party"></label>
+        <label class="f buyer-only"><span>Completion / closing date</span><input type="date" data-p="close"></label>
+      </div>
+      <label class="f" style="margin-top:12px"><span>General notes</span><textarea data-p="notes"></textarea></label>
+    </div>
+  </div>
+
+  <div class="sheet">
+    <div class="sheet-h"><h2>Before you start - safety first</h2><span class="ref">HSE</span></div>
+    <div class="sheet-b">
+      <div class="warn"><b>If you smell gas:</b> get fresh air, open doors and windows, turn off the emergency control valve if it is safe, no flames or electrical switches, and call the gas emergency number from a safe place. <span class="src" style="display:inline">(<a href="#" data-src="GSR2">Gas Safe Register</a>)</span></div>
+      <ul style="margin:0;padding-left:18px;font-size:14px">
+        <li>Test smoke alarms on the day you move in; NFPA advises testing them at least once a month. <span class="src" style="display:inline">(<a href="#" data-src="NFPA">NFPA</a>)</span></li>
+        <li>Where fuel-burning appliances are fitted, check for a battery-operated or battery back-up CO alarm. <span class="src" style="display:inline">(<a href="#" data-src="CDC">CDC Carbon Monoxide</a>)</span></li>
+        <li>Look only at damaged sockets, switches or exposed wiring. Do not touch them; report them in writing. <span class="src" style="display:inline">(<a href="#" data-src="PP">Professional practice</a>)</span></li>
+        <li>Take photos from the floor. Do not stand on furniture, benches or baths to reach high areas. <span class="src" style="display:inline">(<a href="#" data-src="PP">Professional practice</a>)</span></li>
+      </ul>
+      <div class="row" style="margin-top:14px"><button class="btn pri" data-go="sweep">Start the Handover Sweep &rarr;</button><button class="btn" id="newFindingStart">Log something now</button></div>
+    </div>
+  </div>
+</section>
+
+<!-- SWEEP -->
+<section class="view hide" id="view-sweep">
+  <div class="sheet">
+    <div class="sheet-h"><h2>Handover Sweep</h2><span class="ref">SHEET 01 &middot; <span id="sweepCount"></span></span></div>
+    <div class="sheet-b">
+      <p class="lede">Safety first, then every room in the same order each time, then the handover items. Photograph each area with the time stamp on. For each area, also ask: <b>is anything hidden behind furniture, rugs or fresh paint?</b></p>
+      <div class="tbl-wrap"><table class="tbl stack" id="sweepTbl">
+        <thead><tr><th style="width:34%">Area</th><th>Status</th><th style="width:120px">Hidden or covered?</th><th style="width:130px"></th></tr></thead>
+        <tbody></tbody>
+      </table></div>
+    </div>
+  </div>
+</section>
+
+<!-- CHECKS -->
+<section class="view hide" id="view-checks">
+  <div class="sheet">
+    <div class="sheet-h"><h2>Master Move-In / Move-Out Checks</h2><span class="ref">SHEET 02 &middot; <span id="checkCount"></span></span></div>
+    <div class="sheet-b">
+      <p class="lede">Safety, evidence and handover. <b>High</b> priority is kept for safety items. Everything else is about having clear, dated evidence. Nothing here is a legal opinion.</p>
+      <div class="row" style="margin-bottom:10px">
+        <span class="hint">Filter:</span>
+        <div class="seg" id="checkFilter"><button data-v="all" class="on">All</button><button data-v="High">High</button><button data-v="Medium">Medium</button><button data-v="open">Open</button><button data-v="finding">Findings</button></div>
+      </div>
+      <div class="tbl-wrap"><table class="tbl stack" id="checkTbl">
+        <thead><tr><th style="width:30%">Check</th><th style="width:26%">What to record</th><th>Priority</th><th>Status</th></tr></thead>
+        <tbody></tbody>
+      </table></div>
+    </div>
+  </div>
+</section>
+
+<!-- FINDINGS -->
+<section class="view hide" id="view-findings">
+  <div id="findList">
+    <div class="sheet">
+      <div class="sheet-h"><h2>Findings Register</h2><div class="row"><span class="ref" id="findCount"></span><button class="btn pri sm" id="addFinding">+ New finding</button></div></div>
+      <div class="sheet-b" id="findItems"></div>
+    </div>
+  </div>
+  <div id="findEdit" class="hide">
+    <div class="row no-print" style="margin-bottom:10px"><button class="btn ghost sm" id="backToList">&larr; All findings</button></div>
+    <div class="editor-layout">
+      <div class="sheet"><div class="sheet-h"><h2 id="edTitle">MOVE-001</h2><span class="ref">FINDING RECORD</span></div>
+        <div class="sheet-b" id="edBody"></div>
+      </div>
+      <aside class="side"><div class="prompt-box" id="promptBox"></div></aside>
+    </div>
+  </div>
+</section>
+
+<!-- LOG -->
+<section class="view hide" id="view-log">
+  <div class="sheet">
+    <div class="sheet-h"><h2>Room-by-Room Condition Record</h2><span class="ref">SHEET 04 &middot; <span id="crCount"></span></span></div>
+    <div class="sheet-b">
+      <p class="lede">One line per item. Record the condition at move-in, then add the move-out condition on the last day. The record compares them for you. NSW Government: tenants are not responsible for fair wear and tear, but are responsible for damage (see the Guide for examples).</p>
+      <div class="grid g3">
+        <label class="f"><span>Room</span><input type="text" id="crRoom" placeholder="e.g. Bedroom 2"></label>
+        <label class="f"><span>Item</span><input type="text" id="crItem" placeholder="e.g. Carpet, window, oven"></label>
+        <label class="f"><span>At move-in</span><select id="crIn"><option value="0">Clean and good</option><option value="1">Fair</option><option value="2">Worn</option><option value="3">Damaged</option><option value="4">Missing</option><option value="-1">Not applicable</option></select></label>
+        <label class="f"><span>Move-in notes</span><input type="text" id="crInNote" placeholder="e.g. Small mark by door, photo 14"></label>
+        <label class="f"><span>At move-out (add later)</span><select id="crOut"><option value="">Not yet</option><option value="0">Clean and good</option><option value="1">Fair</option><option value="2">Worn</option><option value="3">Damaged</option><option value="4">Missing</option><option value="-1">Not applicable</option></select></label>
+        <label class="f"><span>Photographed?</span><select id="crPhoto"><option value="">Select</option><option>Yes, time-stamped</option><option>Yes</option><option>No</option></select></label>
+      </div>
+      <div class="row" style="margin-top:10px"><button class="btn pri" id="crSave">Add to record</button></div>
+      <div class="tbl-wrap" style="margin-top:14px"><table class="tbl stack" id="crTbl"><thead><tr><th>Room / item</th><th>Move-in</th><th>Move-out</th><th>Photos</th><th>Compare</th><th></th></tr></thead><tbody></tbody></table></div>
+      <p class="hint">To add the move-out condition later, choose it in the row's Move-out box. Condition words are a recording scale (professional practice), not a legal finding.</p>
+    </div>
+  </div>
+  <div class="sheet">
+    <div class="sheet-h"><h2>Keys &amp; Meters</h2><span class="ref" id="kmCount"></span></div>
+    <div class="sheet-b">
+      <p class="lede">MoneyHelper and Shelter England (UK): photograph the meters when you move in, take final readings on the day you move out, and hand all keys back. Counting and listing keys: professional practice.</p>
+      <div class="grid g4">
+        <label class="f"><span>Item</span><select id="kmType"><option>Electricity meter</option><option>Gas meter</option><option>Water meter</option><option>Keys</option><option>Remotes / fobs / cards</option><option>Other</option></select></label>
+        <label class="f"><span>Label</span><input type="text" id="kmLabel" placeholder="e.g. Front door keys, meter no."></label>
+        <label class="f"><span>At move-in (reading or count)</span><input type="number" id="kmIn" step="any" min="0"></label>
+        <label class="f"><span>At move-out (reading or count)</span><input type="number" id="kmOut" step="any" min="0"></label>
+      </div>
+      <div class="row" style="margin-top:10px"><button class="btn pri" id="kmSave">Add</button></div>
+      <div class="tbl-wrap" style="margin-top:14px"><table class="tbl stack" id="kmTbl"><thead><tr><th>Item</th><th>Label</th><th>Move-in</th><th>Move-out</th><th>Check</th><th></th></tr></thead><tbody></tbody></table></div>
+    </div>
+  </div>
+</section>
+
+<!-- REPORT -->
+<section class="view hide" id="view-report">
+  <div class="row no-print" style="margin-bottom:12px">
+    <button class="btn pri" id="printBtn">Print / Save as PDF</button>
+    <button class="btn" id="exportBtn">Download backup (.json)</button>
+    <label class="btn">Restore backup<input type="file" id="importFile" accept=".json,application/json" style="display:none"></label>
+    <button class="btn danger" id="resetBtn">Clear all data</button>
+  </div>
+  <div class="sheet"><div class="sheet-b" id="reportBody"></div></div>
+</section>
+
+<!-- GUIDE -->
+<section class="view hide" id="view-guide">
+  <div class="sheet">
+    <div class="sheet-h"><h2>What you can do now</h2><span class="ref">SAFE STEPS &middot; ALL CITED</span></div>
+    <div class="sheet-b">
+      <p class="lede">Practical steps from public guidance for moving in, moving out and final walk-throughs. They are general information, not legal advice. Tenancy and property laws differ by country and state.</p>
+      <ul class="steps" id="stepsList" style="padding-left:18px;font-size:14px"></ul>
+    </div>
+  </div>
+  <div class="sheet">
+    <div class="sheet-h"><h2>How priorities are defined</h2><span class="ref">SHEET 06 &middot; KEY</span></div>
+    <div class="sheet-b legend">
+      <div><span class="risk High">High</span><span>Safety items only: a smoke or CO alarm not working, a gas smell, or exposed wiring or damaged sockets.</span></div>
+      <div><span class="risk Medium">Medium</span><span>Anything damaged, missing, dirty, not working or changed since move-in, and any evidence still to collect (photos, meter readings, keys, signed report).</span></div>
+      <div><span class="risk Low">Low</span><span>Recorded for completeness, with no issue found.</span></div>
+      <p class="hint" style="margin:6px 0 0">Priority organises your record. It is not a legal finding on who is responsible. Priority definitions and condition words: professional practice.</p>
+    </div>
+  </div>
+  <div class="sheet">
+    <div class="sheet-h"><h2>What this tool will not do</h2><span class="ref">LIMITS</span></div>
+    <div class="sheet-b">
+      <ul style="margin:0;padding-left:18px">
+        <li>It does not decide who pays for damage or how much of a deposit is returned. Your tenancy agreement, local law, the deposit scheme or a tribunal do that.</li>
+        <li>It does not replace an official condition report or inventory form required in your country or state. Use it alongside that form.</li>
+        <li>It is not a building survey. For hidden defects, use the other Beneath the Surface checks.</li>
+      </ul>
+    </div>
+  </div>
+  <div class="sheet">
+    <div class="sheet-h"><h2>Standards &amp; Measurements</h2><span class="ref">REFERENCES</span></div>
+    <div class="sheet-b">
+      <h3 style="font-size:14px;margin:0 0 6px">Guidance used in this tool</h3>
+      <ul class="refs">
+        <li><b>Inventory and photos (England):</b> check the inventory against the property on moving day and ask for it to be corrected before you sign; take your own photos of any marks, even if listed; sign and date it only when accurate and keep a copy; photograph the meters when you move in. <span class="src" style="display:inline">(MoneyHelper Moving checklist, Shelter Inventory)</span></li>
+        <li><b>Deposit (England):</b> the landlord or agent must put the deposit in a government-approved scheme within 30 days of getting it, and give you the required information within 30 days. The scheme offers a free dispute service. <span class="src" style="display:inline">(UK Gov Deposit protection)</span></li>
+        <li><b>Moving out (England):</b> clean to the same standard as when you moved in, take final meter readings on the day you move out, hand your keys back, try to be there for any check-out inspection, and raise a dispute with the deposit scheme if you disagree with deductions. <span class="src" style="display:inline">(Shelter Moving out, MoneyHelper Moving checklist, Shelter Inventory)</span></li>
+        <li><b>Condition report (NSW, Australia):</b> the landlord or agent completes a condition report before the tenant moves in; the tenant completes their part and returns a copy within 7 days, keeping the other copy; photos with time stamps are encouraged. <span class="src" style="display:inline">(NSW Condition reports)</span></li>
+        <li><b>Fair wear and tear vs damage (NSW, Australia):</b> for example, faded curtains or frayed cords vs missing or torn curtains; furniture indentations and traffic marks vs stains or burns in carpet; faded, chipped or cracked paint vs an unapproved paint job; worn benchtop vs burns or cuts; loose hinges or worn sliding tracks vs broken glass. <span class="src" style="display:inline">(NSW Fair wear and tear)</span></li>
+        <li><b>Buying (US):</b> before closing, inspect the home and make sure it is acceptable and any agreed repairs have been completed. <span class="src" style="display:inline">(CFPB)</span></li>
+        <li><b>Safety at handover:</b> test smoke alarms at least once a month; install a battery-operated or battery back-up CO detector; know the gas emergency steps. <span class="src" style="display:inline">(NFPA, CDC Carbon Monoxide, Gas Safe Emergency)</span></li>
+        <li><b>Units:</b> 1 cm = 0.39 in. Meter readings as shown on the meter, with the unit printed on it.</li>
+      </ul>
+      <div class="info" style="margin-top:10px"><b>Country-specific:</b> deposit protection, condition report forms, deadlines (for example 7 days in NSW), pre-move-out inspections and what counts as fair wear and tear are set by local law and differ between countries and states. Check your tenancy agreement and your local tenancy authority. Buyers: check your contract for the final inspection and handover terms.</div>
+      <p class="hint">Items marked <b>Professional practice</b> reflect general inspection and HSE practice. No single public standard covers them, so no standard is claimed.</p>
+      <h3 style="font-size:14px;margin:14px 0 6px">Source list</h3>
+      <ul class="srclist" id="srcList"></ul>
+    </div>
+  </div>
+</section>
+
+</div>
+</main>
+
+<footer><div class="wrap"><span>THE SNAG TAG &middot; BENEATH THE SURFACE COLLECTION &middot; SPECIALIST CHECK 12: MOVE-IN / MOVE-OUT CONDITION</span><span id="saveState">SAVED ON THIS DEVICE</span></div></footer>
+<div class="toast" id="toast"></div>
+
+<script>
+(function(){
+"use strict";
+var KEY='snagtag_bts_move_v1';
+
+var SRC={
+ UKD:{n:'UK Government - Tenancy deposit protection',d:'updated 5 Nov 2024',u:'https://www.gov.uk/tenancy-deposit-protection'},
+ SHI:{n:'Shelter England - How to check and agree an inventory',d:'updated 19 Dec 2024',u:'https://england.shelter.org.uk/housing_advice/private_renting/how_to_check_and_agree_an_inventory'},
+ SHL:{n:'Shelter England - What to do when you leave your rented home',d:'updated 1 May 2026',u:'https://england.shelter.org.uk/housing_advice/private_renting/what_to_do_when_you_leave_your_rented_home'},
+ MH:{n:'MoneyHelper (UK) - Moving checklist for private renters',d:'current web guidance',u:'https://www.moneyhelper.org.uk/en/homes/renting/moving-checklist-for-private-renters'},
+ NSW1:{n:'NSW Government (Australia) - Rental property condition reports',d:'updated 24 May 2024',u:'https://www.nsw.gov.au/housing-and-construction/rules/rental-property-condition-reports'},
+ NSW2:{n:'NSW Government (Australia) - Fair wear and tear versus damage in rental properties',d:'updated 4 Sep 2026',u:'https://www.nsw.gov.au/housing-and-construction/rules/fair-wear-and-tear-versus-damage-rental-properties'},
+ CFPB:{n:'US Consumer Financial Protection Bureau - What should I do before, during and after the mortgage closing?',d:'current web guidance',u:'https://www.consumerfinance.gov/ask-cfpb/what-should-i-do-before-during-and-after-the-mortgage-closing-process-en-1907/'},
+ NFPA:{n:'NFPA - Smoke Alarms at Home safety tips',d:'2018',u:'https://fire.nv.gov/uploadedFiles/firenvgov/content/Home/Features/SmokeAlarmsatHome2019.pdf'},
+ CDC:{n:'US CDC - Avoid Carbon Monoxide Poisoning (prevention tips)',d:'5 Jan 2018',u:'https://archive.cdc.gov/www_cdc_gov/media/releases/2018/s0105-carbon-monoxide-poisoning.html'},
+ GSR2:{n:'Gas Safe Register (UK) - What to do in a gas emergency',d:'current web guidance',u:'https://www.gassaferegister.co.uk/gas-emergency/what-to-do-in-a-gas-emergency/'},
+ PP:{n:'Professional practice',d:'general inspection and HSE practice, no single public standard',u:''}
+};
+function srcShort(k){return {UKD:'UK Gov Deposit protection',SHI:'Shelter Inventory',SHL:'Shelter Moving out',MH:'MoneyHelper Moving checklist',NSW1:'NSW Condition reports',NSW2:'NSW Fair wear and tear',CFPB:'CFPB',NFPA:'NFPA',CDC:'CDC Carbon Monoxide',GSR2:'Gas Safe Emergency',PP:'Professional practice'}[k];}
+function srcTags(keys){return '<div class="src">Source: '+(keys||['PP']).map(function(k){return '<a href="#src-'+k+'" data-src="'+k+'" title="'+esc(SRC[k].n)+'">'+srcShort(k)+'</a>';}).join(' &middot; ')+'</div>';}
+
+var SWEEP=[
+ {id:'smoke',g:'Safety first',a:'Smoke alarms',h:'Present on each level; press the test button on each',s:['NFPA']},
+ {id:'co',g:'Safety first',a:'CO alarms (where fuel appliances are fitted)',h:'Present, test button, replace-by date',s:['CDC']},
+ {id:'gas',g:'Safety first',a:'Gas meter and emergency control valve',h:'Location known; no gas smell',s:['GSR2']},
+ {id:'water',g:'Safety first',a:'Water shut-off valve and electrical panel',h:'Location known and reachable; no visible damage',s:['PP']},
+ {id:'locks',g:'Safety first',a:'External doors, locks and window catches',h:'All lock, keys work, windows open and close',s:['PP']},
+ {id:'entry',g:'Rooms',a:'Entrance, hall and living areas',h:'Walls, ceilings, floors, doors, lights and sockets',s:['NSW1','PP']},
+ {id:'kitchen',g:'Rooms',a:'Kitchen and appliances',h:'Benchtops, cupboards, sink, oven, hob, extractor, fridge if included',s:['NSW1','NSW2']},
+ {id:'bath',g:'Rooms',a:'Bathrooms and toilets',h:'Fixtures, seals, tiles, fan, taps, mould, leaks',s:['NSW1','PP']},
+ {id:'bed',g:'Rooms',a:'Bedrooms',h:'Walls, carpet or floor, wardrobes, windows, coverings',s:['NSW1','NSW2']},
+ {id:'laundry',g:'Rooms',a:'Laundry and utility',h:'Taps, drains, dryer vent, machine connections',s:['PP']},
+ {id:'windows',g:'Rooms',a:'Windows, glass and coverings',h:'Cracked or broken glass, curtains, blinds and cords',s:['NSW2']},
+ {id:'outside',g:'Rooms',a:'Outside, garden and balcony',h:'Fences, paths, lawn, balcony, bins, outdoor lights',s:['PP']},
+ {id:'storage',g:'Rooms',a:'Garage, sheds and storage',h:'Items left behind, damage, doors and remotes',s:['PP']},
+ {id:'meters',g:'Handover',a:'Meter readings',h:'Electricity, gas and water, photographed with date and time',s:['MH','PP']},
+ {id:'keys',g:'Handover',a:'Keys, remotes and access cards',h:'Counted and listed',s:['MH','PP']},
+ {id:'repairs',g:'Handover',a:'Agreed repairs',h:'Done as agreed, with invoices',s:['CFPB']},
+ {id:'incl',g:'Handover',a:'Included items',h:'Appliances, fittings and furniture listed in the agreement are present and working',s:['CFPB','PP']},
+ {id:'clean',g:'Handover',a:'Cleanliness and rubbish',h:'Clean, belongings removed, rubbish disposed of',s:['SHL','MH','PP']}
+];
+
+var CHECKS=[
+ {id:'smoke',t:'Smoke alarms working',r:'Test button pressed on every alarm.',m:'Alarms tested, result',p:'High',s:['NFPA']},
+ {id:'co',t:'CO alarm where fuel appliances are fitted',r:'Battery-operated or battery back-up CO alarm present.',m:'Location, tested',p:'High',s:['CDC']},
+ {id:'gas',t:'No gas smell',r:'At the meter and appliances.',m:'Yes / no, action taken',p:'High',s:['GSR2']},
+ {id:'elec',t:'No exposed wiring or damaged sockets',r:'Look only; report in writing.',m:'Where, photo',p:'High',s:['PP']},
+ {id:'report',t:'Inventory or condition report received',r:'Checked against the property at move-in and corrected before you sign.',m:'Date received',p:'Medium',s:['MH','SHI','NSW1']},
+ {id:'photos',t:'Time-stamped photos of every room',r:'Wide shot and close-ups of any marks.',m:'Photo count, date',p:'Medium',s:['NSW1','MH','SHI']},
+ {id:'return',t:'Your part completed and returned in time',r:'Within the local deadline (NSW: 7 days); keep a copy.',m:'Date returned',p:'Medium',s:['NSW1']},
+ {id:'copy',t:'Signed copy kept',r:'Your own copy of the report or inventory.',m:'Where kept',p:'Medium',s:['SHI','NSW1']},
+ {id:'meterin',t:'Meter readings at move-in',r:'Photo of each meter showing the reading.',m:'Readings',p:'Medium',s:['MH']},
+ {id:'deposit',t:'Deposit protected (where required)',r:'England: government-approved scheme within 30 days, with prescribed information.',m:'Scheme, reference',p:'Medium',s:['UKD']},
+ {id:'shutoff',t:'Water shut-off and gas valve located',r:'Everyone at home knows where they are.',m:'Locations',p:'Medium',s:['GSR2','PP']},
+ {id:'keysin',t:'Keys counted at move-in',r:'Every key, remote and card listed.',m:'Count',p:'Medium',s:['MH','PP']},
+ {id:'repairs',t:'Agreed repairs completed (buyers)',r:'Checked before closing or completion.',m:'Repair, done yes / no',p:'Medium',s:['CFPB']},
+ {id:'incl',t:'Included items present and working',r:'As listed in the contract or tenancy agreement.',m:'Item, working yes / no',p:'Medium',s:['CFPB','PP']},
+ {id:'fwt',t:'Fair wear and tear separated from damage',r:'Compare move-out changes with the examples in the Guide.',m:'Item, which it is',p:'Medium',s:['NSW2']},
+ {id:'clean',t:'Clean and cleared at move-out',r:'Belongings removed, cleaned to the same standard as at move-in, rubbish disposed of.',m:'Done yes / no',p:'Medium',s:['SHL','MH','PP']},
+ {id:'meterout',t:'Final meter readings',r:'Taken on the day you move out, with a photo of each meter.',m:'Readings',p:'Medium',s:['SHL','MH']},
+ {id:'keysout',t:'All keys returned',r:'Same count as at move-in.',m:'Count returned',p:'Medium',s:['MH','PP']},
+ {id:'final',t:'Final inspection attended',r:'Try to be there if a check-out inspection is done.',m:'Date, who attended',p:'Medium',s:['SHI','SHL']},
+ {id:'writing',t:'Issues raised in writing',r:'Email or letter with photos and dates.',m:'Date sent',p:'Medium',s:['PP']}
+];
+
+var APPS=['Walls','Ceiling','Floor / carpet','Windows / glass','Doors / locks','Curtains / blinds','Kitchen benchtop / cupboards','Appliance','Bathroom fixtures','Lights / sockets','Smoke / CO alarm','Outdoor area','Keys / remotes','Meter','Other'];
+var SIGNS=['Marks or scuffs','Stains','Burns or cuts','Holes','Cracks','Broken glass','Worn or faded','Loose or broken fitting','Not working','Missing','Dirty / not cleaned','Mould or damp','Pest signs','Alarm not working','Gas smell','Exposed wiring or damaged socket','No issue seen'];
+var QUESTIONS=[
+ 'Have all agreed repairs been completed? Can I see the invoices?',
+ 'Which fixtures, fittings and appliances are included, and are they all working?',
+ 'Where are the water shut-off, the gas valve and the electrical panel?',
+ 'Will I receive all keys, remotes, alarm codes, manuals and warranties at handover?',
+ 'When and how will final meter readings be taken?',
+ 'Are smoke and CO alarms installed and tested?',
+ 'Has anything changed or been damaged since my offer was accepted?'
+];
+
+var STEPS={
+ inventory:{t:'Check the inventory against the property on moving day and ask for it to be corrected before you sign. Take your own photos, including of any marks already listed. Sign and date it only when it is accurate, and keep a copy.',s:['MH','SHI']},
+ timestamp:{t:'Take photos with time stamps. Complete your part of the condition report and return a copy within the time allowed (NSW: 7 days); keep the other copy.',s:['NSW1']},
+ meters:{t:'Photograph the meters when you move in, and take final meter readings, with photos, on the day you move out.',s:['MH','SHL']},
+ deposit:{t:'England: your deposit must be protected in a government-approved scheme within 30 days, with prescribed information. Check the rules where you live.',s:['UKD']},
+ leave:{t:'When you leave: move your belongings out, clean to the same standard as when you moved in, take final meter readings, hand back all keys, and try to be there for any check-out inspection.',s:['SHL','MH','SHI']},
+ dispute:{t:'If you disagree with proposed deductions, raise a dispute with your deposit protection scheme. Its dispute service is free, and time limits may apply, so contact it as soon as possible.',s:['UKD','SHL']},
+ fwt:{t:'Tenants are not responsible for fair wear and tear, only for damage. For example: faded curtains are wear, torn curtains are damage; traffic marks are wear, burns are damage.',s:['NSW2']},
+ walk:{t:'Buying: inspect the home before closing and make sure it is acceptable and any agreed repairs have been completed.',s:['CFPB']},
+ smoke:{t:'Test smoke alarms on move-in day and at least once a month.',s:['NFPA']},
+ co:{t:'Where fuel-burning appliances are fitted, install a battery-operated or battery back-up CO detector.',s:['CDC']},
+ gas:{t:'If you smell gas: fresh air, open doors and windows, turn off the emergency control valve if safe, no flames or switches, call the gas emergency number.',s:['GSR2']},
+ writing:{t:'Raise every issue in writing, with photos and dates, and keep copies.',s:['PP']}
+};
+function stepsFor(f){
+  var has=function(a,x){return a.indexOf(x)>-1;},k=[];
+  var dmg=['Marks or scuffs','Stains','Burns or cuts','Holes','Cracks','Broken glass','Worn or faded','Loose or broken fitting','Missing'];
+  if(has(f.signs,'Alarm not working')||has(f.apps,'Smoke / CO alarm'))k.push('smoke','co');
+  if(has(f.signs,'Gas smell'))k.push('gas');
+  if(dmg.some(function(x){return has(f.signs,x);}))k.push('timestamp','fwt');
+  if(has(f.apps,'Meter'))k.push('meters');
+  if(has(f.apps,'Keys / remotes'))k.push('leave');
+  if(has(f.signs,'Dirty / not cleaned'))k.push('leave');
+  if(f.signs.some(function(x){return x!=='No issue seen';}))k.push('writing');
+  if(S.settings.mode==='buyer'&&f.signs.some(function(x){return x!=='No issue seen';}))k.push('walk');
+  return k.filter(function(x,i){return k.indexOf(x)===i;});
+}
+function stepHtml(key){var s=STEPS[key];return esc(s.t)+' <span class="src" style="display:inline">('+s.s.map(srcShort).join(', ')+')</span>';}
+/* ---------- State ---------- */
+function blank(){return {v:1,kind:'move',settings:{mode:'buyer',theme:'light'},property:{},sweep:{},checks:{},findings:[],cond:[],km:[],questions:{},seq:0};}
+var S=blank();
+try{var raw=localStorage.getItem(KEY); if(raw){var o=JSON.parse(raw); if(o&&o.v===1){S=Object.assign(blank(),o);}}}catch(e){}
+var saveTimer=null;
+function flush(){
+  clearTimeout(saveTimer);saveTimer=null;
+  try{localStorage.setItem(KEY,JSON.stringify(S));$('#saveState').textContent='SAVED ON THIS DEVICE';}
+  catch(e){$('#saveState').textContent='NOT SAVED - STORAGE FULL';toast('Storage is full. Download a backup, then remove some photos.');}
+}
+function save(){clearTimeout(saveTimer);saveTimer=setTimeout(flush,250);}
+window.addEventListener('pagehide',function(){if(saveTimer)flush();});
+document.addEventListener('visibilitychange',function(){if(document.visibilityState==='hidden'&&saveTimer)flush();});
+
+/* ---------- Helpers ---------- */
+function $(s,r){return (r||document).querySelector(s);}
+function $$(s,r){return Array.prototype.slice.call((r||document).querySelectorAll(s));}
+function esc(s){return String(s==null?'':s).replace(/[&<>"']/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c];});}
+function toast(m){var t=$('#toast');t.textContent=m;t.classList.add('show');clearTimeout(t._h);t._h=setTimeout(function(){t.classList.remove('show');},2600);}
+function num(v){if(v===''||v==null)return null;var n=parseFloat(v);return isFinite(n)?n:null;}
+function r1(n){return Math.round(n*10)/10;}
+function r2(n){return Math.round(n*100)/100;}
+function mBoth(m){return m==null?'-':r2(m)+' m ('+r1(m*3.28084)+' ft)';}
+function now(){return new Date().toISOString();}
+function fmtDate(iso){if(!iso)return '-';var d=new Date(iso);return d.toLocaleDateString(undefined,{year:'numeric',month:'short',day:'numeric'});}
+function fmtD(d){return d?fmtDate(new Date(d+'T12:00:00').toISOString()):'-';}
+function daysSince(d){if(!d)return null;return Math.floor((Date.now()-new Date(d+'T12:00:00').getTime())/86400000);}
+
+/* ---------- Settings ---------- */
+function applySettings(){
+  document.documentElement.setAttribute('data-theme',S.settings.theme);
+  document.body.setAttribute('data-mode',S.settings.mode);
+  $$('#modeSeg button').forEach(function(b){b.classList.toggle('on',b.dataset.v===S.settings.mode);});
+  $$('#themeSeg button').forEach(function(b){b.classList.toggle('on',b.dataset.v===S.settings.theme);});
+}
+function segBind(id,key,after){ $$('#'+id+' button').forEach(function(b){b.addEventListener('click',function(){S.settings[key]=b.dataset.v;applySettings();save();if(after)after();});}); }
+segBind('modeSeg','mode',function(){renderAll();});
+segBind('themeSeg','theme');
+
+/* ---------- Tabs ---------- */
+var curTab='start';
+function go(t){
+  curTab=t;
+  $$('.view').forEach(function(v){v.classList.add('hide');});
+  $('#view-'+t).classList.remove('hide');
+  $$('#tabs button').forEach(function(b){b.classList.toggle('on',b.dataset.t===t);});
+  if(t==='report')renderReport();
+  if(t==='log')renderLog();
+  if(t==='findings'&&!curId)showList();
+  window.scrollTo(0,0);
+}
+$$('#tabs button').forEach(function(b){b.addEventListener('click',function(){go(b.dataset.t);});});
+$$('[data-go]').forEach(function(b){b.addEventListener('click',function(){go(b.dataset.go);});});
+
+/* ---------- Property ---------- */
+function renderProperty(){ $$('[data-p]').forEach(function(el){el.value=S.property[el.dataset.p]||'';}); }
+$$('[data-p]').forEach(function(el){el.addEventListener('input',function(){S.property[el.dataset.p]=el.value;save();});el.addEventListener('change',function(){S.property[el.dataset.p]=el.value;save();});});
+
+/* ---------- Sweep ---------- */
+var SW_ST=[['unchecked','Not checked'],['none','No signs'],['signs','Signs found'],['noaccess','No access']];
+function renderSweep(){
+  var h='',lastG='',done=0;
+  SWEEP.forEach(function(s){
+    var st=S.sweep[s.id]||{status:'unchecked'}; if(st.status!=='unchecked')done++;
+    if(s.g!==lastG){h+='<tr><td colspan="4" style="font-family:var(--mono);font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--cyan);padding-top:16px;border-bottom:1px solid var(--line)">'+esc(s.g)+'</td></tr>';lastG=s.g;}
+    h+='<tr data-id="'+s.id+'"><td data-l="Area"><b>'+esc(s.a)+'</b><div class="sub">'+esc(s.h)+'</div>'+srcTags(s.s)+'</td><td data-l="Status"><div class="stat">';
+    SW_ST.forEach(function(o){h+='<button type="button" data-v="'+o[0]+'" class="'+(st.status===o[0]?'on':'')+'">'+o[1]+'</button>';});
+    h+='</div><input type="text" class="note-in" placeholder="Note (optional)" value="'+esc(st.note||'')+'"></td>';
+    h+='<td data-l="Hidden or covered?"><select class="conc"><option value="">-</option><option'+(st.conc==='No'?' selected':'')+'>No</option><option'+(st.conc==='Possibly'?' selected':'')+'>Possibly</option><option'+(st.conc==='Yes'?' selected':'')+'>Yes</option></select></td>';
+    h+='<td>'+(st.status==='signs'?'<button type="button" class="btn sm mk">+ Log finding</button>':'')+'</td></tr>';
+  });
+  $('#sweepTbl tbody').innerHTML=h;
+  $('#sweepCount').textContent=done+' / '+SWEEP.length+' CHECKED';
+}
+$('#sweepTbl').addEventListener('click',function(e){
+  var tr=e.target.closest('tr[data-id]');if(!tr)return;var id=tr.dataset.id;var st=S.sweep[id]||(S.sweep[id]={status:'unchecked'});
+  var b=e.target.closest('.stat button');
+  if(b){st.status=b.dataset.v;save();renderSweep();return;}
+  if(e.target.closest('.mk')){var s=SWEEP.filter(function(x){return x.id===id;})[0];newFinding({room:s.a,source:'Handover Sweep: '+s.a});}
+});
+$('#sweepTbl').addEventListener('input',function(e){var tr=e.target.closest('tr[data-id]');if(!tr)return;var st=S.sweep[tr.dataset.id]||(S.sweep[tr.dataset.id]={status:'unchecked'});
+  if(e.target.classList.contains('note-in'))st.note=e.target.value; save();});
+$('#sweepTbl').addEventListener('change',function(e){if(e.target.classList.contains('conc')){var tr=e.target.closest('tr[data-id]');var st=S.sweep[tr.dataset.id]||(S.sweep[tr.dataset.id]={status:'unchecked'});st.conc=e.target.value;save();}});
+
+/* ---------- Checks ---------- */
+var CK_ST=[['open','Open'],['ok','OK'],['finding','Finding'],['na','N/A']];
+var ckFilter='all';
+$$('#checkFilter button').forEach(function(b){b.addEventListener('click',function(){ckFilter=b.dataset.v;$$('#checkFilter button').forEach(function(x){x.classList.toggle('on',x===b);});renderChecks();});});
+function renderChecks(){
+  var h='',done=0;
+  CHECKS.forEach(function(c){
+    var st=S.checks[c.id]||{status:'open'}; if(st.status!=='open')done++;
+    if(ckFilter==='High'||ckFilter==='Medium'){if(c.p!==ckFilter)return;}
+    if(ckFilter==='open'&&st.status!=='open')return;
+    if(ckFilter==='finding'&&st.status!=='finding')return;
+    h+='<tr data-id="'+c.id+'"><td data-l="Check"><b>'+esc(c.t)+'</b><div class="sub">'+esc(c.r)+'</div>'+srcTags(c.s)+'</td><td data-l="What to record">'+esc(c.m)+'</td><td data-l="Priority"><span class="risk '+c.p+'">'+c.p+'</span></td><td data-l="Status"><div class="stat">';
+    CK_ST.forEach(function(o){h+='<button type="button" data-v="'+o[0]+'" class="'+(st.status===o[0]?'on':'')+'">'+o[1]+'</button>';});
+    h+='</div><input type="text" class="note-in" placeholder="Note (optional)" value="'+esc(st.note||'')+'">'+(st.status==='finding'?'<div style="margin-top:6px"><button type="button" class="btn sm mk">+ Log finding</button></div>':'')+'</td></tr>';
+  });
+  if(!h)h='<tr><td colspan="4"><div class="empty">No checks match this filter.</div></td></tr>';
+  $('#checkTbl tbody').innerHTML=h;
+  $('#checkCount').textContent=done+' / '+CHECKS.length+' COMPLETED';
+}
+$('#checkTbl').addEventListener('click',function(e){
+  var tr=e.target.closest('tr[data-id]');if(!tr)return;var id=tr.dataset.id;var st=S.checks[id]||(S.checks[id]={status:'open'});
+  var b=e.target.closest('.stat button');
+  if(b){st.status=b.dataset.v;save();renderChecks();return;}
+  if(e.target.closest('.mk')){var c=CHECKS.filter(function(x){return x.id===id;})[0];newFinding({source:'Master check: '+c.t,risk:c.p});}
+});
+$('#checkTbl').addEventListener('input',function(e){var tr=e.target.closest('tr[data-id]');if(!tr)return;var st=S.checks[tr.dataset.id]||(S.checks[tr.dataset.id]={status:'open'});st.note=e.target.value;save();});
+
+/* ---------- Findings ---------- */
+var curId=null;
+function findById(id){return S.findings.filter(function(f){return f.id===id;})[0];}
+function newFinding(pre){
+  S.seq=(S.seq||0)+1;
+  var id='MOVE-'+String(S.seq).padStart(3,'0');
+  var f={id:id,created:now(),room:'',apps:[],signs:[],size:null,link:'',desc:'',photos:{},risk:'',riskAuto:true,escalate:'',status:'Open',recheck:'',notes:'',source:''};
+  if(pre)Object.keys(pre).forEach(function(k){f[k]=pre[k];});
+  if(pre&&pre.risk)f.riskAuto=false;
+  S.findings.push(f);save();
+  go('findings');openFinding(id);
+}
+function showList(){curId=null;$('#findEdit').classList.add('hide');$('#findList').classList.remove('hide');renderFindList();}
+function openFinding(id){curId=id;$('#findList').classList.add('hide');$('#findEdit').classList.remove('hide');renderEditor();window.scrollTo(0,0);}
+$('#addFinding').addEventListener('click',function(){newFinding();});
+$('#newFindingStart').addEventListener('click',function(){newFinding();});
+$('#backToList').addEventListener('click',showList);
+
+var HIGH_SIGNS=['Gas smell','Exposed wiring or damaged socket','Alarm not working'];
+function isHigh(f){return f.signs.some(function(x){return HIGH_SIGNS.indexOf(x)>-1;});}
+function suggestRisk(f){
+  if(isHigh(f))return 'High';
+  if(f.signs.length&&f.signs.every(function(x){return x==='No issue seen';}))return 'Low';
+  if(f.signs.length||f.apps.length)return 'Medium';
+  return '';
+}
+function chipGroup(key,list,f){
+  var h='<div class="chips" data-k="'+key+'">';
+  list.forEach(function(x){h+='<button type="button" class="chip'+(f[key].indexOf(x)>-1?' on':'')+'" data-x="'+esc(x)+'">'+esc(x)+'</button>';});
+  return h+'</div>';
+}
+function stepH(n,tag,title){return '<div class="step-h"><div class="num">'+n+'</div><div><div class="tag">'+tag+'</div><h3>'+title+'</h3></div></div>';}
+function photoSlot(k,t,d,f){
+  var src=f.photos[k];
+  return '<div class="ph" data-ph="'+k+'"><div class="pt">'+t+'</div><div class="pd">'+d+'</div>'+(src?'<img alt="'+t+' photo" src="'+src+'"><div class="row"><label class="btn sm">Replace<input type="file" accept="image/*" capture="environment"></label><button type="button" class="btn sm danger rmph">Remove</button></div>':'<label class="btn sm">Add photo<input type="file" accept="image/*" capture="environment"></label>')+'</div>';
+}
+function cmBoth(c){return c==null?'-':r1(c)+' cm ('+r1(c/2.54)+' in)';}
+function sizeMsg(f){if(f.size==null)return '';return cmBoth(f.size)+' &middot; photograph it with a ruler or tape in the shot';}
+function renderEditor(){
+  var f=findById(curId);if(!f){showList();return;}
+  if(f.riskAuto){f.risk=suggestRisk(f);}
+  $('#edTitle').textContent=f.id;
+  var h='';
+  if(f.source)h+='<div class="info">Started from: '+esc(f.source)+'</div>';
+  h+='<div class="step">'+stepH(1,'Locate','Which room and which item?')+
+    '<label class="f"><span>Location</span><input type="text" data-f="room" value="'+esc(f.room)+'" placeholder="e.g. Bedroom 2, carpet by the window"></label>'+
+    '<div class="q">Item</div>'+chipGroup('apps',APPS,f)+'</div>';
+  h+='<div class="step">'+stepH(2,'Observe','What do you notice?')+chipGroup('signs',SIGNS,f)+
+    '<label class="f" style="margin-top:12px"><span>Describe what you see (facts only)</span><textarea data-f="desc" placeholder="e.g. Burn mark about 3 cm across, 40 cm from the wall; not on the move-in report">'+esc(f.desc)+'</textarea></label></div>';
+  h+='<div class="step">'+stepH(3,'Measure','Size and links')+
+    '<div class="grid g2"><label class="f"><span>Size of the mark or damage (cm)</span><input type="number" step="0.5" min="0" data-fn="size" value="'+(f.size==null?'':f.size)+'"><span class="conv" id="dConv">'+sizeMsg(f)+'</span></label>'+
+    '<label class="f"><span>Linked finding (other check)</span><input type="text" data-f="link" value="'+esc(f.link)+'" placeholder="e.g. Condition record line, DAMP-002"></label></div>'+
+    '<p class="hint">Add every item to the Room-by-Room Condition Record so move-in and move-out can be compared.</p></div>';
+  h+='<div class="step">'+stepH(4,'Photograph','Three-photo evidence set')+
+    '<div class="photos">'+photoSlot('context','1 - Context','The whole room, so the item can be located',f)+photoSlot('close','2 - Close-up','The mark or damage, with a ruler for scale',f)+photoSlot('relation','3 - Relationship','A fixed point nearby (door, window, socket)',f)+'</div>'+
+    '<p class="hint">Keep the camera time stamp on. Take photos from the floor, not from furniture or benches.</p></div>';
+  h+='<div class="step">'+stepH(5,'Classify','Priority')+
+    '<div class="row"><div class="seg" id="riskSeg">'+['High','Medium','Low'].map(function(x){return '<button type="button" data-v="'+x+'" class="'+(f.risk===x?'on':'')+'">'+x+'</button>';}).join('')+'</div>'+
+    '<span class="hint">'+(f.riskAuto?'Suggested from your answers. Tap to set your own.':'Set by you. <a href="#" id="riskAutoBtn">Use suggestion</a>')+'</span></div></div>';
+  h+='<div class="step">'+stepH(6,'Escalate','Landlord, agent, seller, tradesperson or deposit scheme')+
+    '<div class="chips" data-single="escalate">'+['Landlord / agent','Seller / conveyancer','Tradesperson','Deposit scheme / tribunal','Not currently indicated'].map(function(x){return '<button type="button" class="chip'+(f.escalate===x?' on':'')+'" data-x="'+x+'">'+x+'</button>';}).join('')+'</div>'+
+    '<div class="grid g2" style="margin-top:12px"><label class="f"><span>Status</span><select data-f="status">'+['Open','Reported in writing','Agreed','Repaired','Resolved'].map(function(x){return '<option'+(f.status===x?' selected':'')+'>'+x+'</option>';}).join('')+'</select></label>'+
+    '<label class="f owner-only"><span>Re-check date</span><input type="date" data-f="recheck" value="'+esc(f.recheck)+'"></label></div>'+
+    '<label class="f" style="margin-top:12px"><span>Notes</span><textarea data-f="notes">'+esc(f.notes)+'</textarea></label></div>';
+  h+='<div class="row" style="margin-top:6px"><button type="button" class="btn pri" id="doneFinding">Save and close</button><button type="button" class="btn danger" id="delFinding">Delete finding</button></div>';
+  $('#edBody').innerHTML=h;
+  renderPrompts(f);
+}
+function buildPrompts(f){
+  var has=function(a,x){return a.indexOf(x)>-1;};
+  var ind=[],next=[],warn=[],esc_=[];
+  f.apps.forEach(function(x){ind.push(x);});
+  f.signs.forEach(function(x){if(x!=='No issue seen')ind.push(x);});
+  if(f.size!=null)ind.push('Size: '+cmBoth(f.size));
+  if(has(f.signs,'Gas smell'))warn.push('Get fresh air, open doors and windows, no flames or electrical switches, and call the gas emergency number from a safe place (Gas Safe Register).');
+  if(has(f.signs,'Exposed wiring or damaged socket'))warn.push('Do not touch it. Keep children away, and report it in writing so an electrician can make it safe.');
+  if(has(f.signs,'Alarm not working'))warn.push('A home needs working smoke alarms. Report it today, and test all alarms (NFPA).');
+  if(f.signs.some(function(x){return x!=='No issue seen';}))next.push('Photograph it with the time stamp on, and add it to the Room-by-Room Condition Record.');
+  if(['Marks or scuffs','Stains','Burns or cuts','Worn or faded','Broken glass','Loose or broken fitting'].some(function(x){return has(f.signs,x);}))next.push('Check whether it was on the move-in report. At move-out, compare it with the fair wear and tear examples in the Guide (NSW).');
+  if(has(f.signs,'Mould or damp'))next.push('Record where and how big it is, and use the Dampness check. Raise it in writing straight away.');
+  if(has(f.signs,'Pest signs'))next.push('Record where and what you saw, and use the Timber & Pests check.');
+  if(has(f.signs,'Not working'))next.push('Note what does not work and how you tested it (switched on, water run, door tried).');
+  if(has(f.apps,'Meter'))next.push('Photograph the meter with the reading, date and time visible (UK Government).');
+  if(has(f.apps,'Keys / remotes'))next.push('Count and list every key, remote and card in Keys & Meters.');
+  if(isHigh(f))esc_.push('Report this to the landlord, agent or seller in writing today. Safety items should be fixed before the home is lived in.');
+  esc_.push('This record is evidence. It does not decide who is responsible or what a deposit or contract allows.');
+  function uniq(a){return a.filter(function(x,i){return a.indexOf(x)===i;});}
+  return {ind:uniq(ind),next:uniq(next),warn:uniq(warn),esc:uniq(esc_)};
+}
+function renderPrompts(f){
+  var p=buildPrompts(f),h='';
+  p.warn.forEach(function(w){h+='<div class="warn"><b>Safety:</b> '+esc(w)+'</div>';});
+  h+='<h4>Observation pattern</h4>';
+  h+=p.ind.length?'<ul>'+p.ind.map(function(x){return '<li>'+esc(x)+'</li>';}).join('')+'</ul>':'<p class="hint">Tick the item and what you notice. Prompts build as you go.</p>';
+  if(p.next.length)h+='<h4>Check next</h4><ul>'+p.next.map(function(x){return '<li>'+esc(x)+'</li>';}).join('')+'</ul>';
+  if(p.esc.length)h+='<h4>Escalation</h4><ul>'+p.esc.map(function(x){return '<li>'+esc(x)+'</li>';}).join('')+'</ul>';
+  var st=stepsFor(f);
+  if(st.length)h+='<h4>'+(S.settings.mode==='buyer'?'Safe steps (for the owner)':'Safe steps now')+'</h4><ul class="steps">'+st.map(function(k){return '<li>'+stepHtml(k)+'</li>';}).join('')+'</ul>';
+  h+='<p class="hint" style="margin:0">These prompts organise evidence. They do not identify the cause. "Check next" and escalation prompts: professional practice. Safety prompts and safe steps: cited as shown.</p>';
+  $('#promptBox').innerHTML=h;
+}
+function refreshSide(f){
+  if(f.riskAuto){f.risk=suggestRisk(f);$$('#riskSeg button').forEach(function(b){b.classList.toggle('on',b.dataset.v===f.risk);});}
+  var dc=$('#dConv');if(dc)dc.innerHTML=sizeMsg(f);
+  renderPrompts(f);
+}
+$('#edBody').addEventListener('click',function(e){
+  var f=findById(curId);if(!f)return;
+  var chip=e.target.closest('.chip');
+  if(chip){
+    var grp=chip.parentNode,x=chip.dataset.x;
+    if(grp.dataset.k){var a=f[grp.dataset.k],i=a.indexOf(x);if(i>-1)a.splice(i,1);else a.push(x);chip.classList.toggle('on');}
+    else if(grp.dataset.single){var k=grp.dataset.single;f[k]=f[k]===x?'':x;$$('.chip',grp).forEach(function(c){c.classList.toggle('on',c.dataset.x===f[k]);});}
+    save();refreshSide(f);return;
+  }
+  var rb=e.target.closest('#riskSeg button');
+  if(rb){f.risk=rb.dataset.v;f.riskAuto=false;save();renderEditor();return;}
+  if(e.target.id==='riskAutoBtn'){e.preventDefault();f.riskAuto=true;save();renderEditor();return;}
+  if(e.target.closest('.rmph')){var k2=e.target.closest('[data-ph]').dataset.ph;delete f.photos[k2];save();renderEditor();return;}
+  if(e.target.id==='doneFinding'){save();toast(f.id+' saved');showList();return;}
+  if(e.target.id==='delFinding'){
+    if(e.target.dataset.confirm){S.findings=S.findings.filter(function(x){return x.id!==f.id;});save();toast(f.id+' deleted');showList();}
+    else{e.target.dataset.confirm='1';e.target.textContent='Tap again to delete';setTimeout(function(){if(e.target){delete e.target.dataset.confirm;e.target.textContent='Delete finding';}},3000);}
+  }
+});
+$('#edBody').addEventListener('input',function(e){
+  var f=findById(curId);if(!f)return;var t=e.target;
+  if(t.dataset.f){f[t.dataset.f]=t.value;save();}
+  else if(t.dataset.fn){f[t.dataset.fn]=num(t.value);save();refreshSide(f);}
+});
+$('#edBody').addEventListener('change',function(e){
+  var t=e.target;
+  if(t.type==='file'&&t.files&&t.files[0]){
+    var f=findById(curId),k=t.closest('[data-ph]').dataset.ph;
+    compress(t.files[0],function(url){if(!url){toast('Could not read that image.');return;}f.photos[k]=url;save();renderEditor();});
+  } else if(t.tagName==='SELECT'&&t.dataset.f){var f2=findById(curId);f2[t.dataset.f]=t.value;save();}
+});
+function compress(file,cb){
+  var rd=new FileReader();
+  rd.onload=function(){var img=new Image();img.onload=function(){
+    var max=900,w=img.width,h=img.height,sc=Math.min(1,max/Math.max(w,h));
+    var c=document.createElement('canvas');c.width=Math.round(w*sc);c.height=Math.round(h*sc);
+    c.getContext('2d').drawImage(img,0,0,c.width,c.height);
+    try{cb(c.toDataURL('image/jpeg',0.62));}catch(err){cb(null);}
+  };img.onerror=function(){cb(null);};img.src=rd.result;};
+  rd.onerror=function(){cb(null);};
+  rd.readAsDataURL(file);
+}
+function renderFindList(){
+  var h='';
+  $('#findCount').textContent=S.findings.length+' FINDING'+(S.findings.length===1?'':'S');
+  if(!S.findings.length){h='<div class="empty">No findings yet. Tap <b>+ New finding</b>, or log one from the Handover Sweep or Master Checks.</div>';}
+  S.findings.forEach(function(f){
+    var pc=Object.keys(f.photos).length;
+    h+='<div class="fcard '+(f.risk||'')+'"><div><div class="row"><span class="fid">'+f.id+'</span>'+(f.risk?'<span class="risk '+f.risk+'">'+f.risk+'</span>':'')+'<span class="hint">'+esc(f.status)+'</span></div>'+
+      '<div style="margin-top:4px"><b>'+esc(f.room||'Location not set')+'</b></div>'+
+      '<div class="meta">'+esc(f.apps.join(', ')||'Item not set')+' &middot; '+esc(f.signs.join(', ')||'No observations yet')+'</div>'+
+      '<div class="meta">Photos: '+pc+'/3 &middot; Escalation: '+esc(f.escalate||'not set')+'</div></div>'+
+      '<div><button type="button" class="btn sm" data-open="'+f.id+'">Open</button></div></div>';
+  });
+  $('#findItems').innerHTML=h;
+}
+$('#findItems').addEventListener('click',function(e){var b=e.target.closest('[data-open]');if(b)openFinding(b.dataset.open);});
+
+
+/* ---------- Condition record & keys/meters ---------- */
+var CW={'0':'Clean and good','1':'Fair','2':'Worn','3':'Damaged','4':'Missing','-1':'Not applicable'};
+function crCompare(c){
+  if(c.out===''||c.out==null)return {t:'Move-out not recorded yet',c:'Low'};
+  var a=+c.in,b=+c.out;
+  if(a===-1||b===-1)return {t:'Not applicable',c:'Low'};
+  if(b>a)return {t:'Changed: check fair wear and tear vs damage (NSW)',c:'Medium'};
+  if(b<a)return {t:'Better than at move-in',c:'Low'};
+  return {t:'Same as move-in',c:'Low'};
+}
+function kmCheck(k){
+  var isMeter=/meter/i.test(k.type);
+  if(k.inv==null)return {t:'Move-in not recorded',c:'Medium'};
+  if(k.outv==null)return {t:isMeter?'Final reading still to take (MoneyHelper)':'Count still to check at move-out',c:'Low'};
+  if(isMeter){if(k.outv<k.inv)return {t:'Lower than move-in: check the reading',c:'Medium'};return {t:'Used: '+r2(k.outv-k.inv),c:'Low'};}
+  if(k.outv<k.inv)return {t:(k.inv-k.outv)+' not returned (MoneyHelper)',c:'Medium'};
+  return {t:'All returned',c:'Low'};
+}
+function renderLog(){
+  var h='';
+  S.cond.forEach(function(c,i){var cmp=crCompare(c);
+    h+='<tr><td data-l="Room / item"><b>'+esc(c.room)+'</b> - '+esc(c.item)+(c.note?'<div class="sub">'+esc(c.note)+'</div>':'')+'</td><td data-l="Move-in">'+esc(CW[String(c.in)])+'</td><td data-l="Move-out"><select class="crOutSel" data-i="'+i+'"><option value=""'+(c.out===''||c.out==null?' selected':'')+'>Not yet</option>'+['0','1','2','3','4','-1'].map(function(v){return '<option value="'+v+'"'+(String(c.out)===v?' selected':'')+'>'+CW[v]+'</option>';}).join('')+'</select></td><td data-l="Photos">'+esc(c.photo||'-')+'</td><td data-l="Compare"><span class="risk '+cmp.c+'">'+esc(cmp.t)+'</span></td><td><button type="button" class="btn sm ghost" data-crdel="'+i+'">Remove</button></td></tr>';});
+  if(!h)h='<tr><td colspan="6"><div class="empty">No items recorded yet.</div></td></tr>';
+  $('#crTbl tbody').innerHTML=h;
+  var ch=S.cond.filter(function(c){return crCompare(c).c==='Medium';}).length;
+  var np=S.cond.filter(function(c){return !c.photo||c.photo==='No';}).length;
+  $('#crCount').textContent=S.cond.length+' ITEM'+(S.cond.length===1?'':'S')+(ch?' · '+ch+' CHANGED':'')+(np?' · '+np+' WITHOUT PHOTOS':'');
+  var v='';
+  S.km.forEach(function(k,i){var ck=kmCheck(k);
+    v+='<tr><td data-l="Item">'+esc(k.type)+'</td><td data-l="Label">'+esc(k.label||'-')+'</td><td data-l="Move-in">'+(k.inv==null?'-':k.inv)+'</td><td data-l="Move-out"><input type="number" class="kmOutIn" data-i="'+i+'" step="any" min="0" value="'+(k.outv==null?'':k.outv)+'" style="max-width:120px"></td><td data-l="Check"><span class="risk '+ck.c+'">'+esc(ck.t)+'</span></td><td><button type="button" class="btn sm ghost" data-kmdel="'+i+'">Remove</button></td></tr>';});
+  if(!v)v='<tr><td colspan="6"><div class="empty">No keys or meters recorded yet.</div></td></tr>';
+  $('#kmTbl tbody').innerHTML=v;
+  var iss=S.km.filter(function(k){return kmCheck(k).c==='Medium';}).length;
+  $('#kmCount').textContent=S.km.length+' ITEM'+(S.km.length===1?'':'S')+(iss?' · '+iss+' TO CHECK':'');
+}
+$('#crSave').addEventListener('click',function(){
+  if(!$('#crRoom').value||!$('#crItem').value){toast('Enter the room and the item.');return;}
+  S.cond.push({room:$('#crRoom').value,item:$('#crItem').value,in:$('#crIn').value,note:$('#crInNote').value,out:$('#crOut').value,photo:$('#crPhoto').value});
+  save();['crItem','crInNote'].forEach(function(id){$('#'+id).value='';});$('#crOut').value='';renderLog();toast('Added to record');
+});
+$('#crTbl').addEventListener('click',function(e){var b=e.target.closest('[data-crdel]');if(!b)return;S.cond.splice(+b.dataset.crdel,1);save();renderLog();});
+$('#crTbl').addEventListener('change',function(e){var s=e.target.closest('.crOutSel');if(!s)return;S.cond[+s.dataset.i].out=s.value;save();renderLog();});
+$('#kmSave').addEventListener('click',function(){
+  var a=num($('#kmIn').value),b=num($('#kmOut').value);
+  if(a==null&&b==null){toast('Enter a reading or count.');return;}
+  if((a!=null&&a<0)||(b!=null&&b<0)){toast('Readings and counts cannot be negative.');return;}
+  S.km.push({type:$('#kmType').value,label:$('#kmLabel').value,inv:a,outv:b});
+  save();['kmLabel','kmIn','kmOut'].forEach(function(id){$('#'+id).value='';});renderLog();toast('Added');
+});
+$('#kmTbl').addEventListener('click',function(e){var b=e.target.closest('[data-kmdel]');if(!b)return;S.km.splice(+b.dataset.kmdel,1);save();renderLog();});
+$('#kmTbl').addEventListener('change',function(e){var t=e.target.closest('.kmOutIn');if(!t)return;var v=num(t.value);S.km[+t.dataset.i].outv=(v!=null&&v>=0)?v:null;save();renderLog();});
+
+/* ---------- Report ---------- */
+function renderReport(){
+  var P=S.property,mode=S.settings.mode==='buyer'?'Pre-Purchase':'Maintenance';
+  var hi=0,esc_=0;S.findings.forEach(function(f){if(f.risk==='High')hi++;if(f.escalate&&f.escalate!=='Not currently indicated')esc_++;});
+  var chg=S.cond.filter(function(c){return crCompare(c).c==='Medium';}).length;
+  var h='<div style="display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;border-bottom:2px solid var(--ink);padding-bottom:10px;margin-bottom:14px">'+
+    '<div><div style="font-family:var(--mono);font-size:11px;letter-spacing:.14em;color:var(--cyan)">THE SNAG TAG &middot; BENEATH THE SURFACE</div><h2 style="margin:4px 0 0;font-size:22px">Move-In / Move-Out Condition Record</h2><div class="hint">'+mode+' check</div></div>'+
+    '<div style="font-family:var(--mono);font-size:12px;text-align:right">'+esc(P.name||'Property')+'<br>'+esc(P.address||'')+'<br>Date: '+esc(P.date||'-')+'<br>By: '+esc(P.inspector||'-')+'</div></div>';
+  h+='<div class="sum-grid"><div class="kpi"><div class="k">Findings</div><div class="v">'+S.findings.length+'</div></div><div class="kpi"><div class="k">High priority</div><div class="v" style="color:var(--high)">'+hi+'</div></div><div class="kpi"><div class="k">Items recorded</div><div class="v">'+S.cond.length+'</div></div><div class="kpi"><div class="k">Changed at move-out</div><div class="v">'+chg+'</div></div></div>';
+  h+='<h3 style="font-size:15px;margin:18px 0 6px">Handover details</h3><p style="margin:0;font-size:14px">Other party: '+esc(P.party||'-')+(S.settings.mode==='owner'?' &middot; Role: '+esc(P.role||'-')+' &middot; Move-in: '+fmtD(P.indate)+' &middot; Move-out: '+fmtD(P.outdate)+' &middot; Deposit scheme / ref: '+esc(P.deposit||'-'):' &middot; Completion / closing: '+fmtD(P.close))+'</p>'+(P.notes?'<p style="font-size:14px">'+esc(P.notes)+'</p>':'');
+  h+='<h3 style="font-size:15px;margin:18px 0 6px">Room-by-room condition</h3>'+(S.cond.length?'<table class="tbl"><thead><tr><th>Room / item</th><th>Move-in</th><th>Move-out</th><th>Photos</th><th>Compare</th></tr></thead><tbody>'+S.cond.map(function(c){return '<tr><td>'+esc(c.room)+' - '+esc(c.item)+(c.note?' ('+esc(c.note)+')':'')+'</td><td>'+esc(CW[String(c.in)])+'</td><td>'+(c.out===''||c.out==null?'-':esc(CW[String(c.out)]))+'</td><td>'+esc(c.photo||'-')+'</td><td>'+esc(crCompare(c).t)+'</td></tr>';}).join('')+'</tbody></table>':'<p class="hint">No items recorded.</p>');
+  h+='<h3 style="font-size:15px;margin:18px 0 6px">Keys &amp; meters</h3>'+(S.km.length?'<table class="tbl"><thead><tr><th>Item</th><th>Label</th><th>Move-in</th><th>Move-out</th><th>Check</th></tr></thead><tbody>'+S.km.map(function(k){return '<tr><td>'+esc(k.type)+'</td><td>'+esc(k.label||'-')+'</td><td>'+(k.inv==null?'-':k.inv)+'</td><td>'+(k.outv==null?'-':k.outv)+'</td><td>'+esc(kmCheck(k).t)+'</td></tr>';}).join('')+'</tbody></table>':'<p class="hint">No keys or meters recorded.</p>');
+  h+='<h3 style="font-size:15px;margin:18px 0 6px">Findings</h3>';
+  if(!S.findings.length)h+='<p class="hint">No findings recorded.</p>';
+  S.findings.forEach(function(f){
+    var p=buildPrompts(f),st=stepsFor(f);
+    h+='<div class="rep-f"><div class="row"><span class="fid">'+f.id+'</span>'+(f.risk?'<span class="risk '+f.risk+'">'+f.risk+'</span>':'')+'<b>'+esc(f.room||'')+'</b></div><dl>'+
+      '<dt>Item</dt><dd>'+esc(f.apps.join(', ')||'-')+'</dd>'+
+      '<dt>Observation</dt><dd>'+esc(f.signs.join(', ')||'-')+(f.desc?'<br>'+esc(f.desc):'')+'</dd>'+
+      (f.size!=null?'<dt>Size</dt><dd>'+cmBoth(f.size)+'</dd>':'')+
+      (f.link?'<dt>Linked</dt><dd>'+esc(f.link)+'</dd>':'')+
+      '<dt>Escalation</dt><dd>'+esc(f.escalate||'-')+' &middot; Status: '+esc(f.status)+(f.recheck?' &middot; Re-check: '+esc(f.recheck):'')+'</dd>'+
+      (p.warn.length?'<dt>Safety</dt><dd>'+p.warn.map(esc).join('<br>')+'</dd>':'')+
+      (p.next.length?'<dt>Check next</dt><dd>'+p.next.map(esc).join('<br>')+'</dd>':'')+
+      (st.length?'<dt>Safe steps</dt><dd>'+st.map(stepHtml).join('<br>')+'</dd>':'')+
+      (f.notes?'<dt>Notes</dt><dd>'+esc(f.notes)+'</dd>':'')+'</dl>';
+    var ph=[['context','Context'],['close','Close-up'],['relation','Relationship']].filter(function(x){return f.photos[x[0]];});
+    if(ph.length)h+='<div class="rep-photos">'+ph.map(function(x){return '<figure><img alt="'+x[1]+'" src="'+f.photos[x[0]]+'"><figcaption>'+x[1]+'</figcaption></figure>';}).join('')+'</div>';
+    h+='</div>';
+  });
+  var sw=SWEEP.filter(function(s){return S.sweep[s.id]&&S.sweep[s.id].status!=='unchecked';});
+  h+='<h3 style="font-size:15px;margin:18px 0 6px">Handover Sweep</h3>';
+  h+=sw.length?'<table class="tbl"><thead><tr><th>Area</th><th>Result</th><th>Hidden?</th><th>Note</th></tr></thead><tbody>'+sw.map(function(s){var st=S.sweep[s.id];return '<tr><td>'+esc(s.a)+'</td><td>'+esc(SW_ST.filter(function(o){return o[0]===st.status;})[0][1])+'</td><td>'+esc(st.conc||'-')+'</td><td>'+esc(st.note||'')+'</td></tr>';}).join('')+'</tbody></table>':'<p class="hint">Not started.</p>';
+  var nc=SWEEP.length-sw.length; if(nc>0)h+='<p class="hint">'+nc+' area(s) not checked.</p>';
+  var ck=CHECKS.filter(function(c){return S.checks[c.id]&&S.checks[c.id].status!=='open';});
+  h+='<h3 style="font-size:15px;margin:18px 0 6px">Master Checks</h3>';
+  h+=ck.length?'<table class="tbl"><thead><tr><th>Check</th><th>Priority</th><th>Result</th><th>Note</th></tr></thead><tbody>'+ck.map(function(c){var st=S.checks[c.id];return '<tr><td>'+esc(c.t)+'</td><td><span class="risk '+c.p+'">'+c.p+'</span></td><td>'+esc(CK_ST.filter(function(o){return o[0]===st.status;})[0][1])+'</td><td>'+esc(st.note||'')+'</td></tr>';}).join('')+'</tbody></table>':'<p class="hint">Not started.</p>';
+  var oc=CHECKS.length-ck.length; if(oc>0)h+='<p class="hint">'+oc+' check(s) still open.</p>';
+  if(S.settings.mode==='buyer'){
+    h+='<h3 style="font-size:15px;margin:18px 0 6px">Questions for the seller or agent</h3><div class="no-print hint" style="margin-bottom:6px">Tick the questions you want on your printed record.</div><ul style="list-style:none;padding:0;margin:0">';
+    QUESTIONS.forEach(function(q,i){var on=S.questions[i]!==false;h+='<li style="margin-bottom:6px;'+(on?'':'opacity:.45')+'" class="'+(on?'':'no-print')+'"><label style="display:flex;gap:8px;align-items:flex-start;font-size:14px"><input type="checkbox" data-q="'+i+'"'+(on?' checked':'')+'> <span>'+esc(q)+'</span></label></li>';});
+    h+='</ul><p class="hint">Final inspection and handover terms are set by your contract and local law. Check with your conveyancer or agent.</p>';
+  }
+  h+='<div class="info" style="margin-top:18px"><b>Important:</b> this record documents the condition seen and photographed on the dates shown. It does not decide who is responsible, replace an official condition report, or give legal advice.</div>';
+  h+='<h3 style="font-size:15px;margin:18px 0 6px">Sources</h3><ul class="srclist">'+Object.keys(SRC).map(function(k){var s=SRC[k];return '<li><b>'+esc(s.n)+'</b> ('+esc(s.d)+')'+(s.u?'<br><span class="hint">'+esc(s.u)+'</span>':'')+'</li>';}).join('')+'</ul>';
+  $('#reportBody').innerHTML=h;
+}
+$('#reportBody').addEventListener('change',function(e){var q=e.target.dataset.q;if(q==null)return;S.questions[q]=e.target.checked;save();renderReport();});
+$('#printBtn').addEventListener('click',function(){renderReport();window.print();});
+$('#exportBtn').addEventListener('click',function(){
+  var blob=new Blob([JSON.stringify(S,null,1)],{type:'application/json'});var a=document.createElement('a');
+  var nm=(S.property.name||'property').replace(/[^a-z0-9]+/gi,'-').replace(/^-|-$/g,'').toLowerCase()||'property';
+  a.href=URL.createObjectURL(blob);a.download='move-condition-'+nm+'-'+new Date().toISOString().slice(0,10)+'.json';document.body.appendChild(a);a.click();
+  setTimeout(function(){URL.revokeObjectURL(a.href);a.remove();},500);toast('Backup downloaded');
+});
+$('#importFile').addEventListener('change',function(e){
+  var file=e.target.files[0];if(!file)return;var rd=new FileReader();
+  rd.onload=function(){try{var o=JSON.parse(rd.result);if(!o||o.v!==1||o.kind!=='move'||!Array.isArray(o.findings))throw 0;S=Object.assign(blank(),o);save();applySettings();renderAll();go('report');toast('Backup restored');}catch(err){toast('That file is not a valid Move-In / Move-Out backup.');}e.target.value='';};
+  rd.readAsText(file);
+});
+$('#resetBtn').addEventListener('click',function(e){
+  var b=e.currentTarget;
+  if(b.dataset.confirm){var keep=S.settings;S=blank();S.settings=keep;save();renderAll();toast('All data cleared');delete b.dataset.confirm;b.textContent='Clear all data';}
+  else{b.dataset.confirm='1';b.textContent='Tap again to clear everything';setTimeout(function(){delete b.dataset.confirm;b.textContent='Clear all data';},3500);}
+});
+
+/* ---------- Guide ---------- */
+function renderGuide(){
+  $('#stepsList').innerHTML=Object.keys(STEPS).map(function(k){return '<li>'+stepHtml(k)+'</li>';}).join('');
+  $('#srcList').innerHTML=Object.keys(SRC).map(function(k){var s=SRC[k];return '<li id="src-'+k+'"><span class="key">'+srcShort(k)+'</span><b>'+esc(s.n)+'</b> ('+esc(s.d)+')'+(s.u?'<br><a href="'+s.u+'" target="_blank" rel="noopener">'+esc(s.u)+'</a>':'')+'</li>';}).join('');
+}
+document.addEventListener('click',function(e){
+  var a=e.target.closest('a[data-src]');if(!a)return;e.preventDefault();e.stopPropagation();
+  go('guide');var el=document.getElementById('src-'+a.dataset.src);if(el){setTimeout(function(){el.scrollIntoView({block:'center'});el.style.background='var(--cyan-soft)';setTimeout(function(){el.style.background='';},1800);},30);}
+},true);
+
+/* ---------- Init ---------- */
+function renderAll(){renderProperty();renderSweep();renderChecks();renderLog();if(curId&&findById(curId))renderEditor();else showList();if(curTab==='report')renderReport();}
+if(!S.property.date){S.property.date=new Date().toISOString().slice(0,10);}
+['cond','km'].forEach(function(k){if(!Array.isArray(S[k]))S[k]=[];});
+renderGuide();applySettings();renderAll();go('start');
+})();
+</script>
+</body>
+</html>
